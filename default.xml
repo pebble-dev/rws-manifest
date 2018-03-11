@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="rebble"
+          fetch=".." />
+  <default revision="master"
+           remote="rebble"
+           sync-j="4" />
+  
+  <project name="rebble-dev-compose" path="compose" />
+  <project name="rebble-auth-py" path="apps/auth" />
+  <project name="rebble-boot" path="apps/boot" />
+  <project name="rebble-dev-fe" path="support/haproxy-fe" />
+  
+</manifest>
