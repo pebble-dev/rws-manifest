@@ -8,6 +8,8 @@
   
   <project name="rebble-auth-py" path="apps/auth" />
   <project name="rebble-boot" path="apps/boot" />
+  <project name="rebble-cohorts" path="apps/cohorts" />
+  <project name="rebble-notif-app-icons" path="apps/notif-app-icons" />
   <project name="rebble-dev-fe" path="dev/infra/haproxy-fe" />
   <project name="rebble-dev-compose" path="dev/rws-compose" />
   
