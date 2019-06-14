@@ -20,11 +20,14 @@ To get RWS running:
   * `STRIPE_SECRET_KEY` / `STRIPE_PUBLIC_KEY` / `STRIPE_WEBHOOK_KEY` / `STRIPE_MONTHLY_PLAN` / `STRIPE_ANNUAL_PLAN`: Keys for Stripe; set to dummy values if you don't have a Stripe development environment.
   * `IBM_API_ROOT`: API path for weather; set to dummy value if you don't have an IBM weather key.
   * `DOMAIN_ROOT`: The root domain for RWS services.  For instance, if your boot server lives at `boot.rebble-dev.emarhavil.com`, then `DOMAIN_ROOT` should be set to `rebble-dev.emarhavil.com`.  You should have wildcard DNS set up to resolve all subdomains of `DOMAIN_ROOT` to point to your RWS Docker environment.
+  * If using Algolia, `ALGOLIA_APP_ID` / `ALGOLIA_ADMIN_API_KEY` / `ALGOLIA_INDEX`; otherwise, do not add to `.env`.
 * Run `docker-compose up`.  RWS should be accessible (with different services exposed selected by `Host:` headers) on port 8086.
 * Set up database components:
   * Run `docker-compose exec auth flask db upgrade` to set up the database for the auth service.
   * Create OAuth keys for Rebble services to talk within themselves: `docker-compose exec auth flask create_oauth_client 'Rebble' --redirect_uri http://boot.YOUR-DOMAIN_ROOT-HERE/auth/complete --scope pebble_token --scope pebble --scope profile`
   * Append the keys to the `.env` file: set `REBBLE_CONSUMER_KEY` to the generated consumer key, and set `REBBLE_CONSUMER_SECRET` to the generated consumer secret value.
+  * Run `docker-compose exec db psql -U postgres -c 'CREATE DATABASE appstore;'` to create the database for the appstore.
+  * Run `docker-compose exec appstore-api flask db upgrade` to set up the database structure for the appstore.
 * Optionally, punch RWS through to its own IP on port 80, if you have a spare IP address for this:
   * `# ip addr add $RWS_IP/24 dev br0`
   * `# iptables -A INPUT -d $RWS_IP -j DROP`
@@ -32,5 +35,3 @@ To get RWS running:
   * `# iptables -I INPUT -d $RWS_IP -p tcp --dport 80 -j ACCEPT`
   * `# iptables -t nat -A PREROUTING -d $RWS_IP -p tcp --dport 80 -j REDIRECT --to-port 8086`
   * Set up wildcard DNS (for instance, `*.rebble-dev.emarhavil.com. A $RWS_IP`).
-
-
