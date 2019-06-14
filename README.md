@@ -18,6 +18,7 @@ To get RWS running:
   * `GITHUB_CONSUMER_KEY` / `GITHUB_CONSUMER_SECRET`: Used for GitHub auth (you can set them to dummy variables if you are not enabling GitHub auth in your setup).
   * `FACEBOOK_CONSUMER_KEY` / `FACEBOOK_CONSUMER_SECRET`: Used for Facebook auth (you can set them to dummy variables if you are not enabling Facebook auth in your setup).
   * `STRIPE_SECRET_KEY` / `STRIPE_PUBLIC_KEY` / `STRIPE_WEBHOOK_KEY` / `STRIPE_MONTHLY_PLAN` / `STRIPE_ANNUAL_PLAN`: Keys for Stripe; set to dummy values if you don't have a Stripe development environment.
+  * `IBM_API_ROOT`: API path for weather; set to dummy value if you don't have an IBM weather key.
   * `DOMAIN_ROOT`: The root domain for RWS services.  For instance, if your boot server lives at `boot.rebble-dev.emarhavil.com`, then `DOMAIN_ROOT` should be set to `rebble-dev.emarhavil.com`.  You should have wildcard DNS set up to resolve all subdomains of `DOMAIN_ROOT` to point to your RWS Docker environment.
 * Run `docker-compose up`.  RWS should be accessible (with different services exposed selected by `Host:` headers) on port 8086.
 * Set up database components:
