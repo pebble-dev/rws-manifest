@@ -13,6 +13,7 @@
   <project name="rebble-lp" path="apps/lp" />
   <project name="rebble-weather" path="apps/weather" />
   <project name="rebble-appstore-api" path="apps/appstore-api" />
+  <project name="rebble-timeline-sync" path="apps/timeline-sync" />
   <project name="rebble-dev-fe" path="dev/infra/haproxy-fe" />
   <project name="rebble-dev-compose" path="dev/rws-compose" />
   <project name="rebble-dev-infra-oauth-redir" path="dev/infra/pebble-oauth-redir" />
