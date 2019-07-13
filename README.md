@@ -30,6 +30,8 @@ To get RWS running:
   * Run `docker-compose exec appstore-api flask db upgrade` to set up the database structure for the appstore.
   * Optionally, import an appstore database dump: `wget https://github.com/pebble-dev/rebble-appstore-api/releases/download/appstore-dump/import-appstore.sql && docker cp import-appstore.sql rws-compose_db_1:/ && docker-compose exec db psql -U postgres appstore -f /import-appstore.sql`
     * CAUTION: Importing this database dump will destroy any appstore data that you may already have in your local appstore database.
+  * Run `docker-compose exec db psql -U postgres -c 'CREATE DATABASE timeline_sync;'` to create the database for timeline.
+  * Run `docker-compose exec timeline-sync flask db upgrade` to set up the database structure for timeline.
 * Optionally, punch RWS through to its own IP on port 80, if you have a spare IP address for this:
   * `# ip addr add $RWS_IP/24 dev br0`
   * `# iptables -A INPUT -d $RWS_IP -j DROP`
